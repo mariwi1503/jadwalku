@@ -3,6 +3,7 @@ dotenv.config()
 const _env = process.env
 
 export const port = _env.PORT
+
 export const dbConfig = {
     port: _env.DB_PORT,
     host: _env.DB_HOST,
@@ -11,3 +12,5 @@ export const dbConfig = {
     password: _env.DB_PASSWORD,
     connectionLimit: 3
 }
+
+export const jwt_secret = _env.JWT_SECRET
