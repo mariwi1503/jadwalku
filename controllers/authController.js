@@ -1,9 +1,8 @@
-import * as bcrypt from 'bcrypt'
-import userModel from '../models/user.model.js';
+import userModel from '../models/userModel.js';
 import { jwtLib } from '../libraries/jwtLib.js';
 import { bcryptLib } from '../libraries/bcryptLib.js';
 
-export const authController = {
+export default {
     signUp: async (req, res) => {
         const phone_format = /^(\+62|62|0)8[1-9][0-9]{6,9}$/
         try {

@@ -7,7 +7,7 @@ export default {
             const [rows, fields] = await db.query(q, data)
             return rows
         } catch (error) {
-            return error
+            throw new Error(error)
         }
     },
     getUserByPhone: async (phone) => {
@@ -16,7 +16,7 @@ export default {
             const [[rows], fields] = await db.query(q, phone)
             return rows
         } catch (error) {
-            return error
+            throw new Error(error)
         }
     }
 }

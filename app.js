@@ -4,7 +4,6 @@ import express from 'express';
 import { port } from './config/index.js';
 import loader from './loaders/express.js';
 
-
 const startServer = async () => {
     const app = express();
 
