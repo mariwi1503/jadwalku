@@ -16,9 +16,11 @@ export default {
             // validate phone format
             const isValid = phone_format.test(phone)
             if(!isValid || phone.length < 10) throw new Error('Nomor telephone tidak valid')
-
             // set phone format to 08xx
             phone = phone.replace(/(\+62|62)/, '0')
+
+            const user_exist = await userModel.getUserByPhone(phone)
+            if(user_exist) throw new Error('Nomor telephone sudah terdaftar')
 
             // hash password with bcrypt
             password = bcryptLib.hasher(password)
@@ -26,8 +28,8 @@ export default {
                 name,
                 phone,
                 password,
-                gender: gender ? gender : null,
-                city: city ? city : null
+                gender: gender ? gender.toLowerCase() : null,
+                city: city ? city.toLowerCase() : null
             }
             await userModel.createUser(user)
             res.status(201).json({
